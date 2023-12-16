@@ -132,11 +132,13 @@
   <ItemGroup>
     <ClInclude Include="constant.h" />
     <ClInclude Include="file_reader.h" />
+    <ClInclude Include="manipulation.h" />
     <ClInclude Include="rates_structures.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="file_reader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="manipulation.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
