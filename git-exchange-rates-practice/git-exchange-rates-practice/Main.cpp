@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 using namespace std;
 
@@ -9,9 +9,9 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    cout << "Ëàáîðàòîðíàÿ ðàáîòà ¹4. GIT\n";
-    cout << "Âàðèàíò ¹4. Êóðñû âàëþò\n";
-    cout << "Àâòîð: Èëüþùåíêî ßíà\n\n";
+    cout << "Ð›Ð°Ð±Ð¾Ñ€Ð°Ñ‚Ð¾Ñ€Ð½Ð°Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð° â„–4. GIT\n";
+    cout << "Ð’Ð°Ñ€Ð¸Ð°Ð½Ñ‚ â„–4. ÐšÑƒÑ€ÑÑ‹ Ð²Ð°Ð»ÑŽÑ‚\n";
+    cout << "ÐÐ²Ñ‚Ð¾Ñ€: Ð˜Ð»ÑŒÑŽÑ‰ÐµÐ½ÐºÐ¾ Ð¯Ð½Ð°\n\n";
     rates* subscriptions[MAX_FILE_ROWS_COUNT];
     int size;
     try
@@ -19,13 +19,13 @@ int main()
         read("data.txt", subscriptions, size);
         for (int i = 0; i < size; i++)
         {
-            cout << subscriptions[i]->bank <<' ';
-            cout << subscriptions[i]->prices.buy_price <<' ';
-            cout << subscriptions[i]->prices.sell_price <<' ';
-            cout << subscriptions[i]->adress <<' ';
+            cout << subscriptions[i]->bank << ' ';
+            cout << subscriptions[i]->buy_price << ' ';
+            cout << subscriptions[i]->sell_price << ' ';
+            cout << subscriptions[i]->adress << ' ';
             cout << '\n';
         }
-       
+
     }
     catch (const char* error)
     {

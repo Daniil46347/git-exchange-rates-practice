@@ -1,19 +1,9 @@
-#include "file_reader.h"
+п»ї#include "file_reader.h"
 #include "constant.h"
 
 #include <fstream>
 #include <cstring>
 
-pric convert(char* str)
-{
-    pric result;
-    char* context = NULL;
-    char* str_number = strtok_s(str, " ", &context);
-    result.buy_price = atoi(str_number);
-    str_number = strtok_s(NULL, " ", &context);
-    result.sell_price = atoi(str_number);
-    return result;
-}
 
 void read(const char* file_name, rates* array[], int& size)
 {
@@ -25,10 +15,11 @@ void read(const char* file_name, rates* array[], int& size)
         while (!file.eof())
         {
             rates* item = new rates;
-            file >> item->bank; 
+            file >> item->bank;
+            file >> item->buy_price;
+            file >> item->sell_price;
             file >> tmp_buffer;
-            //item->prices = convert(tmp_buffer);
-            //file.read(tmp_buffer, 1); // чтения лишнего символа пробела
+            file.read(tmp_buffer, 1); // С‡С‚РµРЅРёСЏ Р»РёС€РЅРµРіРѕ СЃРёРјРІРѕР»Р° РїСЂРѕР±РµР»Р°
             file.getline(item->adress, MAX_STRING_SIZE);
             array[size++] = item;
         }
@@ -36,6 +27,6 @@ void read(const char* file_name, rates* array[], int& size)
     }
     else
     {
-        throw "Ошибка открытия файла";
+        throw "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°";
     }
 }

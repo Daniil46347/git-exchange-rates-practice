@@ -3,15 +3,11 @@
 
 #include "constant.h"
 
-struct pric
-{
-    float buy_price;
-    float sell_price;
-};
 struct rates
 {
     char bank[MAX_STRING_SIZE];
-    pric prices;
+    float buy_price;
+    float sell_price;
     char adress[MAX_STRING_SIZE];
 };
 
