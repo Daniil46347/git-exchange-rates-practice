@@ -6,6 +6,7 @@ using namespace std;
 #include "file_reader.h"
 #include "constant.h"
 #include "manipulation.h"
+#include "processing.h"
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -72,12 +73,21 @@ int main()
             rpts = false;
             break;
         }
+        case 6:
+        {
+            
+            Difference(subscriptions, size); 
+             
+            
+            break;
+        }
         }
 
     }
     for (int i = 0; i < size; i++)
     {
         delete subscriptions[i];
+       
     }
     return 0;
 
