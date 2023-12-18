@@ -5,7 +5,7 @@ using namespace std;
 #include "rates_structures.h"
 #include "file_reader.h"
 #include "constant.h"
-#include <manipulations.h>
+#include "manipulations.h"
 
 void print_data(rates* subscriptions[], int id)
 {
@@ -90,11 +90,65 @@ void BubbleSort(rates* subscriptions[], int size, int sort_id) {
         print_data(subscriptions, d);
     }
 }
-  
 
+void merge(rates* subscriptions[], int left, int mid, int right, int sort_id) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
 
+    // Create temporary arrays
+    rates** LeftSubArray = new rates * [n1];
+    rates** RightSubArray = new rates * [n2];
 
-   
+    // Copy data to temporary arrays
+    for (int i = 0; i < n1; i++) {
+        LeftSubArray[i] = subscriptions[left + i];
+    }
+    for (int j = 0; j < n2; j++) {
+        RightSubArray[j] = subscriptions[mid + 1 + j];
+    }
 
-  
+    // Merge the temporary arrays back into the main array
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (SortCase(sort_id, subscriptions, n1, i, j)) {
+            subscriptions[k] = LeftSubArray[i];
+            i++;
+        }
+        else {
+            subscriptions[k] = RightSubArray[j];
+            j++;
+        }
+        k++;
+    }
 
+    // Copy the remaining elements of LeftSubArray[], if there are any
+    while (i < n1) {
+        subscriptions[k] = LeftSubArray[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of RightSubArray[], if there are any
+    while (j < n2) {
+        subscriptions[k] = RightSubArray[j];
+        j++;
+        k++;
+    }
+
+    // Clean up
+    delete[] LeftSubArray;
+    delete[] RightSubArray;
+}
+
+void mergeSort(rates* subscriptions[], int left, int right, int sort_id) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+
+        // Recursively sort both halves
+        mergeSort(subscriptions, left, mid, sort_id);
+        mergeSort(subscriptions, mid + 1, right, sort_id);
+
+        // Merge the sorted halves
+        merge(subscriptions, left, mid, right, sort_id);
+    }
+}

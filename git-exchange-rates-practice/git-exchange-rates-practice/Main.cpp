@@ -31,7 +31,7 @@ int main()
     {
         cout << error << '\n';
     }
-  
+
     bool rpts = true;
     int rpts_value = 0;
     while (rpts == true)
@@ -57,7 +57,14 @@ int main()
 
         case 4:
         {
-
+            cout << "Критерии сортировки" << endl << "1. убывание разницы между продажей и покупкой    2. сортировка по названию";
+            int sort_id;
+            cin >> sort_id;
+            mergeSort(subscriptions, 0, size - 1, sort_id);
+            for (int i = 0; i < size; i++)
+            {
+                print_data(subscriptions, i);
+            }
             break;
         }
         case 5:
@@ -68,10 +75,10 @@ int main()
         }
 
     }
-        for (int i = 0; i < size; i++)
-        {
-            delete subscriptions[i];
-        }
-        return 0;
-    
+    for (int i = 0; i < size; i++)
+    {
+        delete subscriptions[i];
+    }
+    return 0;
+
 }
