@@ -76,11 +76,8 @@ int main()
             break;
         }
         case 6:
-        {
-            
-            Difference(subscriptions, size); 
-             
-            
+        {    
+            Difference(subscriptions, size);
             break;
         }
         }
